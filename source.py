@@ -1,7 +1,13 @@
 import telebot
 import time
 
-
+dictionary_of_links = {
+    1 : "google.com",
+    2 : "ghasem.ir",
+    3 : "amin.ir",
+    4 : "ashegh sho.del",
+    5 : "koooft"
+}
 bot = telebot.TeleBot("895692273:AAGmqn6xVZShiS1l9vNXNcrf83iXRnL8BVk")
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -22,7 +28,7 @@ def send_number_message(message1):
     bot.reply_to(message1, "عدد مورد نظر خود را وارد بنما")
     @bot.message_handler(func=lambda message: True)
     def send_voice_link(message2):
-        bot.reply_to(message2, "link number " + message2.text)
+        bot.reply_to(message2, dictionary_of_links[int(message2.text)])
 
 
 while True:
