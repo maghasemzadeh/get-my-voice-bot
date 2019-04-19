@@ -18,9 +18,12 @@ def send_help(message):
     bot.reply_to(message, "اینجا پیام معرفی خواهد بود")
 
 @bot.message_handler(commands=['number'])
-def send_voice_link(message):
-    number = message.text[len(message.text)-2:]
-    bot.reply_to(message, "the number is " + number)
+def send_number_message(message1):
+    bot.reply_to(message1, "عدد مورد نظر خود را وارد بنما")
+    @bot.message_handler(func=lambda message: True)
+    def send_voice_link(message2):
+        bot.reply_to(message2, "link number " + message2.text)
+
 
 while True:
     try:
