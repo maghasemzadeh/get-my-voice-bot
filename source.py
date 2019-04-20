@@ -2,12 +2,10 @@ import telebot
 import time
 
 dictionary_of_links = {
-    "google.com": 1,
-    "ghasem.ir": 2,
-    "amin.ir": 3,
-    "ashegh sho.del": 4,
-    "koooft": 5,
-    "123456": 6
+    1: "google.com",
+    2: "amin.ir",
+    3: "ghasem.net",
+    4: "asheghy"
 }
 # اسم سایتا عالی :)
 
@@ -38,7 +36,7 @@ def send_number_message(message1):
     @bot.message_handler(func=lambda message: True)
     def send_voice_link(message2):
         # check if file exists
-        if message2 in dictionary_of_links:
+        if int(message2.text) in dictionary_of_links:
             response_message = "https://path/to/source/" + message2.text + ".mp3"
         else:
             response_message = "شماره مورد نظر یافت نشد!"
