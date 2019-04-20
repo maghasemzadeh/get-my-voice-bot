@@ -2,12 +2,15 @@ import telebot
 import time
 
 dictionary_of_links = {
-    1 : "google.com",
-    2 : "ghasem.ir",
-    3 : "amin.ir",
-    4 : "ashegh sho.del",
-    5 : "koooft"
+    "google.com": 1,
+    "ghasem.ir": 2,
+    "amin.ir": 3,
+    "ashegh sho.del": 4,
+    "koooft": 5,
+    "123456": 6
 }
+# اسم سایتا عالی :)
+
 bot = telebot.TeleBot("895692273:AAGmqn6xVZShiS1l9vNXNcrf83iXRnL8BVk")
 
 
@@ -19,8 +22,8 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['help'])
 def send_help(message):
-    bot.reply_to(message, "با زدن /number شماره مورد نظر خود را به ما بفرستید تا ما لینک وویس را در اختیارتان قرار "
-                          "دهیم.")
+    bot.reply_to(message, "با زدن دستور /number شماره مورد نظر خود را به ما بفرستید تا ما لینک وویس را در اختیارتان "
+                          "قرار دهیم.\n همچنین می‌توانید با زدن دستور /about اطلاعات بات را مشاهده کنید.")
 
 
 @bot.message_handler(commands=['about'])
@@ -34,7 +37,12 @@ def send_number_message(message1):
 
     @bot.message_handler(func=lambda message: True)
     def send_voice_link(message2):
-        bot.reply_to(message2, "https://path/to/source/" + message2.text + ".mp3")
+        # check if file exists
+        if message2 in dictionary_of_links:
+            response_message = "https://path/to/source/" + message2.text + ".mp3"
+        else:
+            response_message = "شماره مورد نظر یافت نشد!"
+        bot.reply_to(message2, response_message)
 
 
 while True:
