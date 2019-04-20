@@ -16,19 +16,13 @@ bot = telebot.TeleBot("895692273:AAGmqn6xVZShiS1l9vNXNcrf83iXRnL8BVk")
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "سلام.\n به مسابقه‌ی جشن نیمه شعبان خوش آمدید.")
     send_help(message)
 
 
 @bot.message_handler(commands=['help'])
 def send_help(message):
     bot.reply_to(message, "با زدن دستور /number شماره مورد نظر خود را به ما بفرستید تا ما لینک وویس را در اختیارتان "
-                          "قرار دهیم.\n همچنین می‌توانید با زدن دستور /about اطلاعات بات را مشاهده کنید.")
-
-
-@bot.message_handler(commands=['about'])
-def send_about(message):
-    bot.reply_to(message, "این بات به عشق ظهور آقا ساخته شده است.")
+                          "قرار دهیم.")
 
 
 @bot.message_handler(commands=['number'])
