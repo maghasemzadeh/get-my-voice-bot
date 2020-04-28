@@ -1,2 +1,3 @@
 # GetMyVoice_bot
-wierd Physical bot !!!!
+We needed a bot in a celebration that gives you your desired video.
+there it is...
